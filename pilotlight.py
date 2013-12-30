@@ -4,5 +4,5 @@ import gradient
 from blinkytape import BlinkyTape
 
 bt = BlinkyTape('/dev/tty.usbmodem1421')
-view = gradient.Gradient(bt, BlinkyTape.BLUE, BlinkyTape.WHITE)
-view.setup()
+pattern = gradient.Gradient(bt, BlinkyTape.BLUE, BlinkyTape.WHITE)
+pattern.setup()

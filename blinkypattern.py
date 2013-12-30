@@ -1,4 +1,4 @@
-class BlinkyView(object):
+class BlinkyPattern(object):
     def __init__(self, blinkytape):
         self._blinkytape = blinkytape
 

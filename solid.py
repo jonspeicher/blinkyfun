@@ -1,6 +1,6 @@
-import blinkyview
+import blinkypattern
 
-class Solid(blinkyview.BlinkyView):
+class Solid(blinkypattern.BlinkyPattern):
     def __init__(self, blinkytape, rgb):
         super(Solid, self).__init__(blinkytape)
         self._rgb = rgb

@@ -1,6 +1,6 @@
-import blinkyview
+import blinkypattern
 
-class Gradient(blinkyview.BlinkyView):
+class Gradient(blinkypattern.BlinkyPattern):
     def __init__(self, blinkytape, start_rgb, end_rgb):
         super(Gradient, self).__init__(blinkytape)
         self._start_rgb = self._floatify(start_rgb)

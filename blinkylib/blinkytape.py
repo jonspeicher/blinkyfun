@@ -2,8 +2,8 @@ import blinkycolor
 import serial
 
 class BlinkyTape(object):
-    def __init__(self, port, pixel_count = 60):
-        self._serial = serial.Serial(port, 57600)
+    def __init__(self, port, baud_rate = 57600, pixel_count = 60):
+        self._serial = serial.Serial(port, baud_rate)
         self._pixel_count = pixel_count
         self._pixels = [blinkycolor.BLACK] * self._pixel_count
 

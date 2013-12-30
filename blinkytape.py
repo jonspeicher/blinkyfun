@@ -18,11 +18,23 @@ class BlinkyTape(object):
 
     def set_pixel(self, index, rgb):
         if index >= self._pixel_count: raise IndexError
-        self._pixels[index] = [min(color, 254) for color in rgb]
+        self._pixels[index] = [int(round(min(color, 254))) for color in rgb]
 
     def fill(self, rgb):
         for index in range(0, self._pixel_count):
             self.set_pixel(index, rgb)
+
+    def gradient(self, start_rgb, end_rgb):
+        start_rgb = [float(color) for color in start_rgb]
+        end_rgb = [float(color) for color in end_rgb]
+        red_delta = (end_rgb[0] - start_rgb[0]) / self._pixel_count
+        green_delta = (end_rgb[1] - start_rgb[1]) / self._pixel_count
+        blue_delta = (end_rgb[2] - start_rgb[2]) / self._pixel_count
+        for index in range(0, self._pixel_count):
+            red = start_rgb[0] + (red_delta * index)
+            green = start_rgb[1] + (green_delta * index)
+            blue = start_rgb[2] + (blue_delta * index)
+            self.set_pixel(index, [red, green, blue])
 
     def update(self):
         pixels = self._pixels + [[255, 255, 255]]
@@ -31,10 +43,5 @@ class BlinkyTape(object):
         self._serial.flush()
 
 bt = BlinkyTape('/dev/tty.usbmodem1411')
-bt.fill(BlinkyTape.RED)
-bt.update()
-
-time.sleep(5)
-
-bt.fill(BlinkyTape.GREEN)
+bt.gradient(BlinkyTape.RED, BlinkyTape.PURPLE)
 bt.update()

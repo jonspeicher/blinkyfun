@@ -1,5 +1,4 @@
 import serial
-import time
 
 class BlinkyTape(object):
     BLACK = [0, 0, 0]
@@ -41,7 +40,3 @@ class BlinkyTape(object):
         for pixel in pixels:
             self._serial.write(pixel)
         self._serial.flush()
-
-bt = BlinkyTape('/dev/tty.usbmodem1411')
-bt.gradient(BlinkyTape.RED, BlinkyTape.PURPLE)
-bt.update()

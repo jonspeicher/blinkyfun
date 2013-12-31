@@ -2,7 +2,7 @@ class BlinkyPattern(object):
     def __init__(self, blinkytape):
         self._blinkytape = blinkytape
         self._animated = False
-        self._timebase_sec = 0.1
+        self._timebase_sec = 0.05
 
     @property
     def animated(self):

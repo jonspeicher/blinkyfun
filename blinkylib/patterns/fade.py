@@ -1,4 +1,5 @@
 import blinkypattern
+import blinkylib.blinkycolor
 import itertools
 
 # TBD: TrapezoidalFade vs SinusoidalFade?
@@ -21,16 +22,21 @@ class Fade(blinkypattern.BlinkyPattern):
         circular_color_list = color_list + [color_list[0]]
         profile = []
         for this_color, next_color in self._pairwise(circular_color_list):
-            ramp = self._make_color_ramp(this_color, next_color, steps_per_period)
-            constant = self._make_constant_color(next_color, steps_per_period)
+            ramp = self._make_rgb_ramp(this_color, next_color, steps_per_period)
+            constant = [next_color] * steps_per_period
             profile.extend(ramp + constant)
         return profile
 
-    def _make_constant_color(self, color, count):
-        return [color] * count
+    def _make_rgb_ramp(self, start_color, end_color, step_count):
+        red_ramp = self._make_ramp(start_color.red, end_color.red, step_count)
+        green_ramp = self._make_ramp(start_color.green, end_color.green, step_count)
+        blue_ramp = self._make_ramp(start_color.blue, end_color.blue, step_count)
+        rgb_ramp = zip(red_ramp, green_ramp, blue_ramp)
+        return [blinkylib.blinkycolor.BlinkyColor(*rgb) for rgb in rgb_ramp]
 
-    def _make_color_ramp(self, first_color, second_color, step_count):
-        return []
+    def _make_ramp(self, start, end, count):
+        delta = (end - start) / float(count)
+        return [start + (delta * index) for index in range(0, count)]
 
     def _pairwise(self, iterable):
         this_iter, next_iter = itertools.tee(iterable)

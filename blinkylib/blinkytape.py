@@ -20,7 +20,7 @@ class BlinkyTape(object):
         self._pixels = pixels
 
     def update(self):
-        UPDATE_VALUE = [255, 255, 255]
+        UPDATE_VALUE = [0, 0, 255]
         for pixel in self._pixels:
             self._serial.write(pixel.raw)
         self._serial.write(UPDATE_VALUE)

@@ -25,3 +25,4 @@ class BlinkyTape(object):
             self._serial.write(pixel.raw)
         self._serial.write(UPDATE_VALUE)
         self._serial.flush()
+        self._serial.flushInput()

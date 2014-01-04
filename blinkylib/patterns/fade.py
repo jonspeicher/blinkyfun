@@ -4,7 +4,7 @@ import itertools
 
 # TBD: TrapezoidalFade vs SinusoidalFade?
 class Fade(blinkypattern.BlinkyPattern):
-    def __init__(self, blinkytape, color_list, period_sec):
+    def __init__(self, blinkytape, color_list, period_sec = 1):
         super(Fade, self).__init__(blinkytape)
         self._animated = True
         self._index = 0

@@ -7,7 +7,8 @@ class Streak(blinkypattern.BlinkyPattern):
     def __init__(self, blinkytape, color, pixel_count = 20, period_sec = 1):
         super(Streak, self).__init__(blinkytape)
         self._animated = True
-        # TBD use period to adjust timebase?
+        self._timebase_sec = float(period_sec) / float(self._blinkytape.pixel_count)
+        print self._timebase_sec
         self._pixels = self._make_streak(color, pixel_count)
 
     def animate(self):

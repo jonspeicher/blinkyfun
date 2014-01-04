@@ -4,7 +4,7 @@ from blinkylib import blinkytape, blinkycolor
 from blinkylib.patterns import fade
 import time
 
-bt = blinkytape.BlinkyTape('/dev/tty.usbmodem1411')
+bt = blinkytape.BlinkyTape('/dev/tty.usbmodem1421')
 color_list = [blinkycolor.BLACK, blinkycolor.RED, blinkycolor.ORANGE,
         blinkycolor.YELLOW, blinkycolor.GREEN, blinkycolor.BLUE,
         blinkycolor.PURPLE, blinkycolor.WHITE]

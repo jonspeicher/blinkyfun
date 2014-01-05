@@ -4,6 +4,10 @@ class BlinkyColor(object):
         self._green = green
         self._blue = blue
 
+    @classmethod
+    def scale(cls, color, scale):
+        return cls(color.red * scale, color.green * scale, color.blue * scale)
+
     @property
     def red(self):
         return self._red

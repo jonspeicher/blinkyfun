@@ -1,9 +1,13 @@
-import serial
+import glob, serial
 
 class BlinkyTape(object):
     def __init__(self, port, baud_rate = 115200, pixel_count = 60):
         self._serial = serial.Serial(port, baud_rate)
         self._pixel_count = pixel_count
+
+    @classmethod
+    def find_first(cls):
+        return glob.glob('/dev/tty.usb*')[0]
 
     @property
     def pixel_count(self):

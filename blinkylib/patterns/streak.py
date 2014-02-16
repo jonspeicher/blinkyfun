@@ -22,6 +22,27 @@ class Streak(blinkypattern.BlinkyPattern):
 
     # TBD: This approach may not work for arbitrary fades as the scale steps
     # when changing between, say, red and green won't be uniform for all colors.
+    # It should work for computing a 0.1-scaled final intensity that could then
+    # be passed into a gradient to make the pattern for the streak animation,
+    # though, e.g.
+    # pattern = Gradient(BlinkyColor.YELLOW, BlinkyColor.scale(BlinkyColor.YELLOW, 0.1), 20)
+    # animation = Streak(pattern, 1)
+    # TBD: What did I want scale for? Just this case? (I think so, I think I
+    # dreamed it, mostly, I was dreaming color increment and decrement); Also,
+    # what is meaningful about >1 scale? I think nothing?
+    # TBD: Also, will the pattern/transition architecture work with the
+    # stock firmware pattern that does the three-phase thing? Or is there
+    # a way to make it do so? Maybe some transitions/animations could
+    # be initialized with patterns like fade and static and streak and
+    # some might be standalone, like the rainbow three-phase thing? Or
+    # consider just random pixels in random colors as fast as possible?
+    # That wouldn't require a fixed pattern, but could still fit the
+    # "animation" interface.
+    # What about sinusoidal fade? If trap fade is fade between lists of
+    # continuous patterns, wouldn't sin fade be the same thing? But, now
+    # that I think of it, does trap fade work for noncontinuous patterns?
+    # I think it does; it just works on a per-pixel basis instead of a
+    # per-strip basis
     def _make_gradient(self, color, step_count):
         final_intensity = 0.1
         scale_per_step = (1 - final_intensity) / (step_count - 1)

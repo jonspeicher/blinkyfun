@@ -1,3 +1,10 @@
+# TBD: patterns seem to use setup or animate but not both, nobody uses teardown
+# yet; is it best not to call blinkytape methods? is it best to just have
+# getpixels? is it best to have init always do static init and animate always
+# do animate even for static patterns? gitpixels would have fewer dependencies
+# e.g. it would not depend on blinkytape, and the performance benefit of knowing
+# when and how ot call update and set pixels etc may not matter
+
 class BlinkyPattern(object):
     def __init__(self, blinkytape):
         self._blinkytape = blinkytape

@@ -1,1 +1,1 @@
-__all__ = ['blinkytape']
+__all__ = ['blinkycolor', 'blinkytape']

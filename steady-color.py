@@ -6,7 +6,8 @@ from animations import steady
 import sys
 
 tape = blinkytape.BlinkyTape(sys.argv[1])
-pattern = solid.Solid(tape, blinkycolor.RED)
+color = blinkycolor.BlinkyColor.from_string(sys.argv[2])
+pattern = solid.Solid(tape, color)
 animation = steady.Steady(pattern)
 player = blinkyplayer.BlinkyPlayer(tape)
 player.play(animation, num_cycles = 1)

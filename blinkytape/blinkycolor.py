@@ -1,8 +1,14 @@
+import sys
+
 class BlinkyColor(object):
     def __init__(self, red, green, blue):
         self._red = self._clamp_color(red)
         self._green = self._clamp_color(green)
         self._blue = self._clamp_color(blue)
+
+    @classmethod
+    def from_string(cls, string):
+        return getattr(sys.modules[__name__], string.upper())
 
     @classmethod
     def scale(cls, color, scale):

@@ -16,5 +16,5 @@ class Gradient(object):
         return [blinkycolor.BlinkyColor(*rgb) for rgb in rgb_gradient]
 
     def _make_gradient(self, start, end, count):
-        delta = (end - start) / float(count)
+        delta = (end - start) / float(count - 1)
         return [start + (delta * index) for index in range(0, count)]

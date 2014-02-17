@@ -6,7 +6,10 @@ class BlinkyPlayer(object):
     def __init__(self, blinkytape):
         self._blinkytape = blinkytape
 
-    def play(self, animation, num_cycles = FOREVER):
+    def display_pattern(self, pattern):
+        self._blinkytape.update(pattern.pixels)
+
+    def play_animation(self, animation, num_cycles = FOREVER):
         finished = self._finished_predicate(animation, num_cycles)
         animation.begin()
         while not finished():

@@ -7,7 +7,8 @@ class BlinkyTape(object):
 
     @classmethod
     def find_first(cls):
-        return glob.glob('/dev/tty.usb*')[0]
+        ports = glob.glob('/dev/tty.usb*')
+        return BlinkyTape(ports[0]) if ports else None
 
     @property
     def pixel_count(self):

@@ -4,8 +4,8 @@ from blinkytape import blinkytape, blinkycolor, blinkyplayer
 from patterns import solid
 import sys
 
-address = blinkytape.BlinkyTape.find_first()
-tape = blinkytape.BlinkyTape(address)
+tape = blinkytape.BlinkyTape.find_first()
+
 color = blinkycolor.BlinkyColor.from_string(sys.argv[1])
 pattern = solid.Solid(tape, color)
 player = blinkyplayer.BlinkyPlayer(tape)

@@ -1,3 +1,7 @@
+# TBD: Some animations mutate a pattern: shift it, fade it, etc.
+# Not all animations need a pattern
+# I need a rainbow pattern for fun
+
 class BlinkyAnimation(object):
     def __init__(self, frame_count, frame_period_sec):
         if frame_count < 0 or frame_period_sec < 0: raise ValueError

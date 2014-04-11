@@ -40,6 +40,9 @@ class BlinkyColor(object):
     def _clamp_color(self, color):
         return max(0.0, min(255.0, color))
 
+    def __repr__(self):
+        return str(self.rgb)
+
 BLACK = BlinkyColor(0, 0, 0)
 RED = BlinkyColor(255, 0, 0)
 ORANGE = BlinkyColor(255, 165, 0)

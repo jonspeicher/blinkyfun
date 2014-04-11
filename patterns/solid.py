@@ -4,4 +4,4 @@ class Solid(object):
 
     @property
     def pixels(self):
-        return self._pixels
+        return list(self._pixels)

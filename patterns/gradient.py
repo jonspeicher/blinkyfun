@@ -6,7 +6,7 @@ class Gradient(object):
 
     @property
     def pixels(self):
-        return self._pixels
+        return list(self._pixels)
 
     def _rgb_gradient(self, pixel_count, start_color, end_color):
         red_gradient = self._gradient(start_color.red, end_color.red, pixel_count)

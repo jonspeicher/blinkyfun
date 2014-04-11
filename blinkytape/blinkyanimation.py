@@ -2,15 +2,14 @@
 # Not all animations need a pattern
 # I need a rainbow pattern for fun
 
-class BlinkyAnimation(object):
-    def __init__(self, frame_count, frame_period_sec):
-        if frame_count < 0 or frame_period_sec < 0: raise ValueError
-        self._frame_count = frame_count
-        self._frame_period_sec = frame_period_sec
+# TBD: How do you do random pixels? is it a pattern that is permuted by the
+# animation? YES; patterns are static, animations do things with patterns,
+# rotate them, scramble them, scale them, sort them, etcetera
 
-    @property
-    def frame_count(self):
-        return self._frame_count
+class BlinkyAnimation(object):
+    def __init__(self, frame_period_sec):
+        if frame_period_sec < 0: raise ValueError
+        self._frame_period_sec = frame_period_sec
 
     @property
     def frame_period_sec(self):

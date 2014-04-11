@@ -10,29 +10,34 @@ class BlinkyPlayer(object):
         self._blinkytape.update(pattern.pixels)
 
     def play_animation(self, animation, num_cycles = FOREVER):
-        finished = self._finished_predicate(animation, num_cycles)
+        player_finished = self._player_finished_predicate(num_cycles)
+        while not player_finished():
+            _play_single_animation_cycle(animation)
+
+    def _play_single_animation_cycle(self, animation):
         animation.begin()
-        while not finished():
+        while not animation.finished:
             pixels = animation.next_frame()
             self._blinkytape.update(pixels)
             time.sleep(animation.frame_period_sec)
         animation.end()
 
-    def _finished_predicate(self, animation, num_cycles):
+    def _player_finished_predicate(self, num_cycles):
         if num_cycles < 0 and num_cycles != self.FOREVER: raise ValueError
         if num_cycles == self.FOREVER:
             predicate = self._forever_predicate()
         else:
-            self._num_frames = animation.frame_count * num_cycles
-            predicate = self._frame_count_predicate()
+            predicate = self._cycle_count_predicate(num_cycles)
         return predicate
 
     def _forever_predicate(self):
         return lambda: False
 
-    def _frame_count_predicate(self):
+    def _cycle_count_predicate(self, num_cycles):
+        # Blah, Python 2.x can't modify a closed-over value (see nonlocal)
+        self._num_cycles = num_cycles
         def predicate():
-            finished = self._num_frames <= 0
-            self._num_frames = self._num_frames - 1
+            finished = self._num_cycles <= 0
+            self._num_cycles = self._num_cycles - 1
             return finished
         return predicate

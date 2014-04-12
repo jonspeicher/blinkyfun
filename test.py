@@ -26,4 +26,4 @@ tape = DummyTape()
 animation = TestAnimation()
 player = blinkyplayer.BlinkyPlayer(tape)
 
-player.play_animation(animation)
+player.play_animation(animation, 2)

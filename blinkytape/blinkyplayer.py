@@ -10,6 +10,9 @@ class BlinkyPlayer(object):
         self._blinkytape.update(pattern.pixels)
 
     def play_animation(self, animation, num_cycles):
+        # Loop for index in range(0,count)
+        # Or for infinite generator
+        # Or While num_cycles == infinite or num_cycles-- > 0
         cycles_finished = self._cycles_finished_predicate(num_cycles)
         while not cycles_finished():
             self._play_single_animation_cycle(animation)

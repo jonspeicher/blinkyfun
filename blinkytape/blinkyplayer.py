@@ -10,12 +10,10 @@ class BlinkyPlayer(object):
         self._blinkytape.update(pattern.pixels)
 
     def play_animation(self, animation, num_cycles):
-        # Loop for index in range(0,count)
-        # Or for infinite generator
-        # Or While num_cycles == infinite or num_cycles-- > 0
-        cycles_finished = self._cycles_finished_predicate(num_cycles)
-        while not cycles_finished():
+        while num_cycles == self.FOREVER or num_cycles > 0:
             self._play_single_animation_cycle(animation)
+            if num_cycles != self.FOREVER:
+                num_cycles = num_cycles - 1
 
     def _play_single_animation_cycle(self, animation):
         animation.begin()
@@ -24,22 +22,3 @@ class BlinkyPlayer(object):
             self._blinkytape.update(pixels)
             time.sleep(animation.frame_period_sec)
         animation.end()
-
-    def _cycles_finished_predicate(self, num_cycles):
-        if num_cycles < 0 and num_cycles != self.FOREVER: raise ValueError
-        if num_cycles == self.FOREVER:
-            predicate = self._never_finish()
-        else:
-            predicate = self._finish_after_countdown_from(num_cycles)
-        return predicate
-
-    def _never_finish(self):
-        return lambda: False
-
-    def _finish_after_countdown_from(self, num_cycles):
-        cycles_remaining = [num_cycles]
-        def predicate():
-            finished = cycles_remaining[0] <= 0
-            cycles_remaining[0] = cycles_remaining[0] - 1
-            return finished
-        return predicate

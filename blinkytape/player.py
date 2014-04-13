@@ -1,6 +1,6 @@
 import time
 
-class BlinkyPlayer(object):
+class Player(object):
     FOREVER = -1
 
     def __init__(self, blinkytape):

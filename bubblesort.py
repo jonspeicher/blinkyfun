@@ -5,14 +5,14 @@
 # algorithm at every call. It would be sorting shuffled indices that the
 # animation would use to construct each frame.
 
-from blinkytape import blinkytape, blinkycolor, blinkyplayer
+from blinkytape import tape, color
 from patterns import gradient
 import random, sys, time
 
-tape = blinkytape.BlinkyTape.find_first()
+tape = tape.BlinkyTape.find_first()
 
-start_color = blinkycolor.BlinkyColor.from_string(sys.argv[1])
-end_color = blinkycolor.BlinkyColor.from_string(sys.argv[2])
+start_color = color.Color.from_string(sys.argv[1])
+end_color = color.Color.from_string(sys.argv[2])
 pattern = gradient.Gradient(tape.pixel_count, start_color, end_color)
 
 indexes = range(0, tape.pixel_count)

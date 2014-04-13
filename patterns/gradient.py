@@ -1,4 +1,4 @@
-from blinkytape import blinkycolor
+from blinkytape import color
 
 class Gradient(object):
     def __init__(self, pixel_count, start_color, end_color):
@@ -13,7 +13,7 @@ class Gradient(object):
         green_gradient = self._gradient(start_color.green, end_color.green, pixel_count)
         blue_gradient = self._gradient(start_color.blue, end_color.blue, pixel_count)
         rgb_gradient = zip(red_gradient, green_gradient, blue_gradient)
-        return [blinkycolor.BlinkyColor(*rgb) for rgb in rgb_gradient]
+        return [color.Color(*rgb) for rgb in rgb_gradient]
 
     def _gradient(self, start, end, count):
         delta = (end - start) / float(count - 1)

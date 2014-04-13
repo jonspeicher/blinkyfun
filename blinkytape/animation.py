@@ -6,7 +6,7 @@
 # animation? YES; patterns are static, animations do things with patterns,
 # rotate them, scramble them, scale them, sort them, etcetera
 
-class BlinkyAnimation(object):
+class Animation(object):
     def __init__(self, frame_period_sec):
         if frame_period_sec < 0: raise ValueError
         self._frame_period_sec = frame_period_sec

@@ -1,6 +1,6 @@
 import random, sys
 
-class BlinkyColor(object):
+class Color(object):
     def __init__(self, red, green, blue):
         self._red = self._clamp_color(red)
         self._green = self._clamp_color(green)
@@ -48,11 +48,11 @@ class BlinkyColor(object):
     def __repr__(self):
         return str(self.rgb)
 
-BLACK = BlinkyColor(0, 0, 0)
-RED = BlinkyColor(255, 0, 0)
-ORANGE = BlinkyColor(255, 165, 0)
-YELLOW = BlinkyColor(255, 255, 0)
-GREEN = BlinkyColor(0, 255, 0)
-BLUE = BlinkyColor(0, 0, 255)
-PURPLE = BlinkyColor(255, 0, 255)
-WHITE = BlinkyColor(255, 255, 255)
+BLACK = Color(0, 0, 0)
+RED = Color(255, 0, 0)
+ORANGE = Color(255, 165, 0)
+YELLOW = Color(255, 255, 0)
+GREEN = Color(0, 255, 0)
+BLUE = Color(0, 0, 255)
+PURPLE = Color(255, 0, 255)
+WHITE = Color(255, 255, 255)

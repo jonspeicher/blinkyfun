@@ -1,4 +1,4 @@
-import sys
+import random, sys
 
 class BlinkyColor(object):
     def __init__(self, red, green, blue):
@@ -9,6 +9,11 @@ class BlinkyColor(object):
     @classmethod
     def from_string(cls, string):
         return getattr(sys.modules[__name__], string.upper())
+
+    @classmethod
+    def random(cls):
+        rgb = [random.randint(0, 255) for i in range(3)]
+        return cls(*rgb)
 
     @classmethod
     def scale(cls, color, scale):

@@ -1,1 +1,1 @@
-__all__ = ['solid']
+__all__ = ['gradient', 'rando', 'solid']

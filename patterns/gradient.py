@@ -1,6 +1,7 @@
 from blinkytape import color
 
 class Gradient(object):
+    # TBD: If this had a length it would also work as a streak; consider
     def __init__(self, pixel_count, start_color, end_color):
         self._pixels = self._rgb_gradient(pixel_count, start_color, end_color)
 

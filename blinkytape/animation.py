@@ -15,11 +15,15 @@ class Animation(object):
     def frame_period_sec(self):
         return self._frame_period_sec
 
+    @property
+    def finished(self):
+        raise NotImplementedError('Animation must implement finished property')
+
     def begin(self):
         pass
 
     def next_frame(self):
-        pass
+        raise NotImplementedError('Animation must implement next_frame method')
 
     def end(self):
         pass
